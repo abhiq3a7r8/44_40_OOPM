@@ -47,7 +47,7 @@ public class Customer {
     public long getPincode() {
         return this.pincode;
     }
-
+    //test commit
     public Date getPurchase_date() {
         return purchase_date;
     }
