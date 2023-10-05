@@ -10,13 +10,13 @@ public class Electronic_Device extends Device implements Electronic_Device_dsc{
       private static boolean isTurnedOn;
       ArrayList<String> turn;
       ArrayList<String> timer;
-      public Electronic_Device(int id,String device_Name,double device_Price,int device_wattage, int user_set_wattage){
-            super(device_Name,device_Price,device_wattage);
-
+      public Electronic_Device(int id,String device_Name,double device_Price,int device_wattage,int user_set_wattage){
+            super(id,device_Name,device_Price,device_wattage);
+            setUser_set_wattage(user_set_wattage);
       }
       public Electronic_Device(String device_Name,double device_Price,int device_wattage,int user_set_wattage){
             super(device_Name,device_Price,device_wattage);
-
+            setUser_set_wattage(user_set_wattage);
       }
 
       public void setUser_set_wattage(int user_set_wattage){

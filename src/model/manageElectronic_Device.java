@@ -8,13 +8,13 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 
-public class manageElectronic_Device {
+//public class manageElectronic_Device {
+//
+//    public ArrayList<Electronic_Device> readJsonFile(String s) {
+//        return null;
+//    }
 
-    public ArrayList<Electronic_Device> readJsonFile(String s) {
-        return null;
-    }
-
-    public class manageStudent extends filehandlingElectronic_Device {
+    public class manageElectronic_Device extends filehandlingElectronic_Device {
         ArrayList<Electronic_Device> Electronic_Devices = new ArrayList<Electronic_Device>();
         /*publicArrayList<Electronic_Device loadJsonFile(String file_path) {
             return readJsonFile(file_path);
@@ -31,11 +31,11 @@ public class manageElectronic_Device {
                 if (rootNode.isArray()) {
                     for (JsonNode node : rootNode) {
                         int id = node.get("id").asInt();
-                        String device_name = node.get("device_name").asText();
+                        String device_Name = node.get("device_Name").asText();
                         int device_price = node.get("device_Price").asInt();
                         int device_wattage = node.get("device_wattage").asInt();
                         int user_set_wattage = node.get("user_set_wattage").asInt();
-                        Electronic_Device dev = new Electronic_Device(id,device_name,device_price,device_wattage,user_set_wattage);
+                        Electronic_Device dev = new Electronic_Device(id,device_Name,device_price,device_wattage,user_set_wattage);
                         Electronic_Devices.add(dev);
                     }
                 }
@@ -65,4 +65,3 @@ public class manageElectronic_Device {
         }
     }
 
-}

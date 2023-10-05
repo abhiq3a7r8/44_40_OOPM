@@ -16,14 +16,15 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
 
         manageCustomer mc1 = new manageCustomer();
-        customers = mc1.readJsonFile("C:\\OOPMISTIC\\src\\model\\customers.json");
+        customers = mc1.readJsonFile("C:\\OOPMISTIC\\10 Controller\\src\\model\\customers.json");
 
         manageElectronic_Device ms1 = new manageElectronic_Device();
-        Electronic_Devices = ms1.readJsonFile("C:\\OOPMISTIC\\src\\model\\Electronic_Device.json");
+        Electronic_Devices = ms1.readJsonFile("C:\\OOPMISTIC\\10 Controller\\src\\model\\Electronic_Device.json");
 
         ObjectMapper mapper = new ObjectMapper();
 
-        String filepath = "C:\\OOPMISTIC\\src\\model\\customers.json";
+        String filepath = "C:\\OOPMISTIC\\10 Controller\\src\\model\\customers.json";
+        String filepathd = "C:\\OOPMISTIC\\10 Controller\\src\\model\\Electronic_Device.json";
 
 
         int choice;
@@ -35,12 +36,12 @@ public class Main {
             System.out.println("4. Display All Customer");
             System.out.println("5. Delete a Customer");
             System.out.println("6. Create a Electronic Device");
-            System.out.println("7. Update a Customer");
-            System.out.println("8. Display a Customer");
-            System.out.println("9. Display All Customer");
-            System.out.println("10. Delete a Customer");
+            System.out.println("7. Update a Electronic Device");
+            System.out.println("8. Display a Electronic Device");
+            System.out.println("9. Display All Electronic Device");
+            System.out.println("10. Delete a Electronic Device");
             System.out.println("11. Exit");
-            System.out.println("6. Exit");
+
             System.out.print("Enter your choice: ");
             choice = scanner.nextInt();
             scanner.nextLine(); // Consume the newline character
@@ -181,6 +182,7 @@ public class Main {
                         Electronic_Devices.add(dev);
                     }
 
+
                     System.out.println("Electronic_Device created and added to the array.");
                     break;
                 case 7:
@@ -205,25 +207,25 @@ public class Main {
                                 System.out.print("Enter Electronic_Device Name: ");
                                 String name_update = scanner.nextLine();
                                 Electronic_Devices.get(id-1).setDevice_Name(name_update);
-                                mapper.writeValue(Paths.get("src/model/Electronic_Devices.json").toFile(), Electronic_Devices);
+                                mapper.writeValue(Paths.get(filepathd).toFile(), Electronic_Devices);
                                 break;
                             case 2:
                                 System.out.print("Enter Electronic_Device price: ");
                                 double Device_Price = scanner.nextDouble();
                                 Electronic_Devices.get(id-1).setDevice_Price(Device_Price);
-                                mapper.writeValue(Paths.get("src/model/Electronic_Devices.json").toFile(), Electronic_Devices);
+                                mapper.writeValue(Paths.get(filepathd).toFile(), Electronic_Devices);
                                 break;
                             case 3:
                                 System.out.print("Enter Electronic Device Wattage: ");
                                 int Device_Wattage = scanner.nextInt();
                                 Electronic_Devices.get(id-1).setDevice_wattage(Device_Wattage);
-                                mapper.writeValue(Paths.get("src/model/Electronic_Devices.json").toFile(), Electronic_Devices);
+                                mapper.writeValue(Paths.get(filepathd).toFile(), Electronic_Devices);
                                 break;
                             case 4:
                                 System.out.print("Enter User Set Wattage: ");
                                 int User_Set_Wattage = scanner.nextInt();
                                 Electronic_Devices.get(id-1).setUser_set_wattage(User_Set_Wattage);
-                                mapper.writeValue(Paths.get("src/model/Electronic_Devices.json").toFile(), Electronic_Devices);
+                                mapper.writeValue(Paths.get(filepathd).toFile(), Electronic_Devices);
                                 break;
                             default:
                                 System.out.println("Invalid choice. Try again.");
@@ -250,7 +252,7 @@ public class Main {
                     String Electronic_Device = Electronic_Devices.get(device_id_delete-1).getDevice_Name();
                     System.out.println("Electronic_Device Deleted Name : "+Electronic_Device);
                     Electronic_Devices.remove(device_id_delete-1);
-                    mapper.writeValue(Paths.get("src/model/Electronic_Devices.json").toFile(), Electronic_Devices);
+                    mapper.writeValue(Paths.get(filepathd).toFile(), Electronic_Devices);
                     break;
                 default:
                     System.out.println("Invalid choice. Try again.");
