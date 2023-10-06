@@ -8,12 +8,18 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
-
-public class manageCustomer extends filehandlingcustomer {
+public class manageCustomer extends filehandlingcustomer implements Displayable {
     ArrayList<Customer> customers = new ArrayList<Customer>();
-    /*public ArrayList<Student> loadJsonFile(String file_path) {
-        return readJsonFile(file_path);
-    }*/
+
+    private int linesBeingDisplayed;
+    private int firstLineIndex;
+    int lastLineIndex;
+    int highlightedLine;
+
+    public manageCustomer(){
+        readJsonFile("C:\\OOPMISTIC\\10 Controller\\src\\model\\customers.json");
+    }
+
     public ArrayList<Customer> readJsonFile(String file_path) {
         ObjectMapper objectMapper = new ObjectMapper();
 
@@ -66,5 +72,100 @@ public class manageCustomer extends filehandlingcustomer {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public ArrayList<String> getHeaders() {
+        ArrayList<String> headers = new ArrayList<String>();
+        headers.add("Id");
+        headers.add("Name");
+        headers.add("MobileNo");
+        headers.add("Email");
+        headers.add("Gender");
+
+
+
+        return headers;
+    }
+
+    /*
+    The getLine(int line) method returns an ArrayList of String objects that represent a single row of the table.
+    The method takes an integer argument line that specifies which row to retrieve. The method retrieves the FootballPlayer object
+    at the specified index in the students list and then extracts the various attributes of the student such as their name, height, weight,
+    etc. These attributes are then added to the ArrayList and returned.
+     */
+    @Override
+    public ArrayList<String> getLine(int line) {
+        ArrayList<String> Customer_details = new ArrayList<String>();
+
+        Customer_details.add(String.valueOf(customers.get(line).getCustomer_id()));
+        Customer_details.add(customers.get(line).getCustomer_name());
+        Customer_details.add(String.valueOf(customers.get(line).getCustomer_name()));
+        Customer_details.add(customers.get(line).getEmail_id());
+        Customer_details.add(customers.get(line).getGender());
+
+
+
+        return Customer_details;
+    }
+
+    /*
+    The getLines(int firstLine, int lastLine) method returns an ArrayList of ArrayList of String objects that represent a subset of rows
+    of the table. The method takes two integer arguments firstLine and lastLine that specify the range of rows to retrieve.
+    The method then iterates over this range and calls getLine(int line) for each row, adding the resulting ArrayList of attributes to a
+    new ArrayList of ArrayList of String objects that is then returned.
+     */
+    @Override
+    public ArrayList<ArrayList<String>> getLines(int firstLine, int lastLine) {
+        ArrayList<ArrayList<String>> Customes_subset = new ArrayList<ArrayList<String>>();
+
+        for (int i = firstLine; i <= lastLine; i++) {
+            Customes_subset.add(getLine(i));
+        }
+        return Customes_subset;
+    }
+
+    @Override
+    public int getFirstLineToDisplay() {
+        return firstLineIndex;
+    }
+
+    @Override
+    public int getLineToHighlight() {
+        return highlightedLine;
+    }
+
+    @Override
+    public int getLastLineToDisplay() {
+        setLastLineToDisplay(getFirstLineToDisplay() + getLinesBeingDisplayed() - 1);
+        return lastLineIndex;
+    }
+
+    @Override
+    public int getLinesBeingDisplayed() {
+        return linesBeingDisplayed;
+    }
+
+    @Override
+    public void setFirstLineToDisplay(int firstLine) {
+        firstLineIndex = firstLine;
+    }
+
+    @Override
+    public void setLineToHighlight(int highlightedLine) {
+        highlightedLine = highlightedLine;
+    }
+
+    @Override
+    public void setLastLineToDisplay(int lastLine) {
+        lastLineIndex = lastLine;
+    }
+
+    @Override
+    public void setLinesBeingDisplayed(int numberOfLines) {
+        linesBeingDisplayed = numberOfLines;
+    }
+
+    public ArrayList getTable() {
+        return customers;
     }
 }
