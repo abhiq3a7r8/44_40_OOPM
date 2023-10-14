@@ -99,7 +99,7 @@ public class manageCustomer extends filehandlingcustomer implements Displayable 
 
         Customer_details.add(String.valueOf(customers.get(line).getCustomer_id()));
         Customer_details.add(customers.get(line).getCustomer_name());
-        Customer_details.add(String.valueOf(customers.get(line).getCustomer_name()));
+        Customer_details.add(String.valueOf(customers.get(line).getPhone_no()));
         Customer_details.add(customers.get(line).getEmail_id());
         Customer_details.add(customers.get(line).getGender());
 

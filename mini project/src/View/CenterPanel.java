@@ -16,7 +16,7 @@ public class CenterPanel extends JPanel {
 
     public void createDisplay(int rows, int cols)
     {
-        this.setLayout(new GridLayout(rows+1,cols));
+        this.setLayout(new GridLayout(0,cols));
         for (int i = 1; i <= cols; i++)
         {
             JButton b = new JButton();
@@ -31,7 +31,7 @@ public class CenterPanel extends JPanel {
         {
             JButton b = new JButton();
             b.setBackground(Color.cyan);
-            b.setPreferredSize(new Dimension(120,25));
+            b.setPreferredSize(new Dimension(80,25));
             customer_buttons.add(b);
             this.add(b);
             validate();
