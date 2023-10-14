@@ -1,5 +1,7 @@
 package Model;
 
+
+import View.View;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ObjectNode;
@@ -74,6 +76,7 @@ public class manageCustomer extends filehandlingcustomer implements Displayable 
         }
     }
 
+
     public ArrayList<String> getHeaders() {
         ArrayList<String> headers = new ArrayList<String>();
         headers.add("Id");
@@ -81,8 +84,9 @@ public class manageCustomer extends filehandlingcustomer implements Displayable 
         headers.add("MobileNo");
         headers.add("Email");
         headers.add("Gender");
-        headers.add("Edit User");
-        headers.add("Delete User");
+
+
+
 
 
 
@@ -95,6 +99,8 @@ public class manageCustomer extends filehandlingcustomer implements Displayable 
     at the specified index in the students list and then extracts the various attributes of the student such as their name, height, weight,
     etc. These attributes are then added to the ArrayList and returned.
      */
+
+
     @Override
     public ArrayList<String> getLine(int line) {
         ArrayList<String> Customer_details = new ArrayList<String>();
@@ -104,8 +110,8 @@ public class manageCustomer extends filehandlingcustomer implements Displayable 
         Customer_details.add(String.valueOf(customers.get(line).getPhone_no()));
         Customer_details.add(customers.get(line).getEmail_id());
         Customer_details.add(customers.get(line).getGender());
-        Customer_details.add("Delete");
-        Customer_details.add("Edit");
+
+
 
 
 

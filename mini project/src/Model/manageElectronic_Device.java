@@ -74,8 +74,8 @@ public class manageElectronic_Device extends filehandlingElectronic_Device imple
         headers.add("Price");
         headers.add("Device Wattage");
         headers.add("User Set Wattage");
-        headers.add("Edit Device");
-        headers.add("Delete Device");
+
+
         return headers;
     }
 
@@ -94,8 +94,7 @@ public class manageElectronic_Device extends filehandlingElectronic_Device imple
         Electronic_Device_details.add(String.valueOf(Electronic_Device.get(line).getDevice_Price()));
         Electronic_Device_details.add(String.valueOf(Electronic_Device.get(line).getDevice_wattage()));
         Electronic_Device_details.add(String.valueOf(Electronic_Device.get(line).getUser_set_wattage()));
-        Electronic_Device_details.add("Edit");
-        Electronic_Device_details.add("Delete");
+
         return Electronic_Device_details;
     }
 

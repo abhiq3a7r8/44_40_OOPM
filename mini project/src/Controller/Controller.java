@@ -4,10 +4,12 @@ import Model.Model;
 import View.View;
 
 
+import javax.swing.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
+import java.util.ArrayList;
 
 public class Controller {
     Model model;
@@ -24,11 +26,13 @@ public class Controller {
         view.centerUpdate(model.getManageCustomerData().getLines(model.getManageCustomerData().getFirstLineToDisplay(), model.getManageCustomerData().getLastLineToDisplay())        ,                 model.getManageCustomerData().getHeaders());
 
 
-
+        deletelistner();
         addButtonClickDevices();
         addButtonClickCustomers();
 
     }
+
+
     private void addButtonClickDevices()
     {
 
@@ -50,6 +54,21 @@ public class Controller {
             }
         });
     }
+
+    private void deletelistner()   {
+        ArrayList<JButton> allbuttons = view.getMf().getIp().getCp().getCustomer_buttons();
+        for(JButton allbutton : allbuttons)
+            allbutton.addMouseListener(new MouseAdapter() {
+                @Override
+                public void mouseClicked(MouseEvent e) {
+                    super.mouseClicked(e);
+                    System.out.println("all clicked");
+                }
+            });
+
+        }
+
+
     private void addScrollingDevices()
     {
         view.getMf().getIp().getCp().addMouseWheelListener(new MouseWheelListener() {
