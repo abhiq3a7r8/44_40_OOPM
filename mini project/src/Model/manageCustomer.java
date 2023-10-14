@@ -81,6 +81,8 @@ public class manageCustomer extends filehandlingcustomer implements Displayable 
         headers.add("MobileNo");
         headers.add("Email");
         headers.add("Gender");
+        headers.add("Edit User");
+        headers.add("Delete User");
 
 
 
@@ -102,6 +104,9 @@ public class manageCustomer extends filehandlingcustomer implements Displayable 
         Customer_details.add(String.valueOf(customers.get(line).getPhone_no()));
         Customer_details.add(customers.get(line).getEmail_id());
         Customer_details.add(customers.get(line).getGender());
+        Customer_details.add("Delete");
+        Customer_details.add("Edit");
+
 
 
 
