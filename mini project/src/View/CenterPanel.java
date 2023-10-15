@@ -9,6 +9,8 @@ public class CenterPanel extends JPanel {
     ArrayList<JButton> header_buttons = new ArrayList<>();
     ArrayList<JButton> customer_buttons = new ArrayList<>();
 
+    ArrayList<JButton> devices_buttons = new ArrayList<>();
+
     ArrayList<JButton> delete_buttons = new ArrayList<>();
 
     public CenterPanel()
@@ -82,6 +84,11 @@ public class CenterPanel extends JPanel {
     public ArrayList<JButton> getCustomer_buttons()
     {
         return customer_buttons;
+    }
+
+    public ArrayList<JButton> getDevices_buttons()
+    {
+        return devices_buttons;
     }
 
 }

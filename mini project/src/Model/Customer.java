@@ -36,6 +36,15 @@ public class Customer extends Individual implements Customer_dsc {
     private int extended_warranty_duration;
     ArrayList<String> cart;
 
+    public int getCustomer_id() {
+        return this.customer_id;
+    }
+
+    public Customer(int currentcustomercount, String gender, String name, String phone_no, String email_id) {
+        super(gender, name, phone_no, email_id);
+        setCustomer_id(currentcustomercount);
+        setExtended_warranty_duration(0);
+    }
 
     public Customer(int currentcustomercount, String gender, String name, String phone_no, String email_id, int extended_warranty_duration) {
         super(gender, name, phone_no, email_id);
@@ -43,10 +52,12 @@ public class Customer extends Individual implements Customer_dsc {
         setExtended_warranty_duration(extended_warranty_duration);
     }
 
-    public Customer(int currentcustomercount, String gender, String name, String phone_no, String email_id) {
-        super(gender, name, phone_no, email_id);
-        setCustomer_id(currentcustomercount);
-        setExtended_warranty_duration(0);
+
+
+    public Customer() {
+        super();
+        // Default constructor with no parameters
+        // You can initialize any default values here if needed
     }
 
 
@@ -62,9 +73,6 @@ public class Customer extends Individual implements Customer_dsc {
         /* GETTER FUNCTIONS TO FETCH THE VALUES OF CLASS VARIABLES
         WHEN THE RESPECTIVE FUNCTION IS CALLED */
 
-    public int getCustomer_id() {
-        return this.customer_id;
-    }
 
     public int getExtended_warranty_duration() {
         return this.extended_warranty_duration;

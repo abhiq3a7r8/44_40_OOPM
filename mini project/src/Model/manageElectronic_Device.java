@@ -35,9 +35,9 @@ public class manageElectronic_Device extends filehandlingElectronic_Device imple
                 for (JsonNode node : rootNode) {
                     int id = node.get("id").asInt();
                     String device_Name = node.get("device_Name").asText();
-                    int device_price = node.get("device_Price").asInt();
-                    int device_wattage = node.get("device_wattage").asInt();
-                    int user_set_wattage = node.get("user_set_wattage").asInt();
+                    String device_price = node.get("device_Price").asText();
+                    String device_wattage = node.get("device_wattage").asText();
+                    String user_set_wattage = node.get("user_set_wattage").asText();
 
                     Electronic_Device dev = new Electronic_Device(id, device_Name, device_price, device_wattage, user_set_wattage);
                     Electronic_Device.add(dev);
@@ -77,6 +77,7 @@ public class manageElectronic_Device extends filehandlingElectronic_Device imple
         headers.add("Device Wattage");
         headers.add("User Set Wattage");
         headers.add("Delete Device");
+        headers.add("Edit Device");
 
 
         return headers;
@@ -97,7 +98,8 @@ public class manageElectronic_Device extends filehandlingElectronic_Device imple
         Electronic_Device_details.add(String.valueOf(Electronic_Device.get(line).getDevice_Price()));
         Electronic_Device_details.add(String.valueOf(Electronic_Device.get(line).getDevice_wattage()));
         Electronic_Device_details.add(String.valueOf(Electronic_Device.get(line).getUser_set_wattage()));
-        Electronic_Device_details.add("delete");
+        Electronic_Device_details.add("delete ID:"+Electronic_Device.get(line).getId());
+        Electronic_Device_details.add("edit ID:"+Electronic_Device.get(line).getId());
 
         return Electronic_Device_details;
     }

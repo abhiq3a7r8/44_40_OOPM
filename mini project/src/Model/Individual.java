@@ -16,6 +16,10 @@ public class Individual{
         setEmail_id(email_id);
     }
 
+    public Individual() {
+
+    }
+
     public void setEmail_id(String email_id){
         this.email_id = email_id.toLowerCase();
     }

@@ -83,11 +83,7 @@ public class manageCustomer extends filehandlingcustomer implements Displayable 
         headers.add("Email");
         headers.add("Gender");
         headers.add("Delete Customer");
-
-
-
-
-
+        headers.add("Edit Customer");
 
         return headers;
     }
@@ -110,19 +106,7 @@ public class manageCustomer extends filehandlingcustomer implements Displayable 
         Customer_details.add(customers.get(line).getEmail_id());
         Customer_details.add(customers.get(line).getGender());
         Customer_details.add("delete ID:"+ customers.get(line).getCustomer_id());
-
-
-
-
-
-
-
-
-
-
-
-
-
+        Customer_details.add("edit ID:"+customers.get(line).getCustomer_id());
         return Customer_details ;
     }
 
