@@ -16,6 +16,8 @@ public class manageElectronic_Device extends filehandlingElectronic_Device imple
     int lastLineIndex;
     int highlightedLine;
 
+    private int selcted_line;
+
     public manageElectronic_Device(){
         readJsonFile("src/Model/Electronic_Device.json");
     }
@@ -74,6 +76,7 @@ public class manageElectronic_Device extends filehandlingElectronic_Device imple
         headers.add("Price");
         headers.add("Device Wattage");
         headers.add("User Set Wattage");
+        headers.add("Delete Device");
 
 
         return headers;
@@ -94,6 +97,7 @@ public class manageElectronic_Device extends filehandlingElectronic_Device imple
         Electronic_Device_details.add(String.valueOf(Electronic_Device.get(line).getDevice_Price()));
         Electronic_Device_details.add(String.valueOf(Electronic_Device.get(line).getDevice_wattage()));
         Electronic_Device_details.add(String.valueOf(Electronic_Device.get(line).getUser_set_wattage()));
+        Electronic_Device_details.add("delete");
 
         return Electronic_Device_details;
     }
@@ -113,6 +117,7 @@ public class manageElectronic_Device extends filehandlingElectronic_Device imple
         }
         return Electronic_Device_subset;
     }
+
 
     @Override
     public int getFirstLineToDisplay() {

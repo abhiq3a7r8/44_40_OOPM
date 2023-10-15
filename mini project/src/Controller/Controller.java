@@ -1,14 +1,20 @@
 package Controller;
 
-import Model.Model;
-import View.View;
+import Model.*;
+import View.*;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import java.nio.file.Paths;
+import java.util.ArrayList;
 
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseWheelEvent;
 import java.awt.event.MouseWheelListener;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class Controller {
@@ -26,7 +32,7 @@ public class Controller {
         view.centerUpdate(model.getManageCustomerData().getLines(model.getManageCustomerData().getFirstLineToDisplay(), model.getManageCustomerData().getLastLineToDisplay())        ,                 model.getManageCustomerData().getHeaders());
 
 
-        deletelistner();
+        deletelistner(model);
         addButtonClickDevices();
         addButtonClickCustomers();
 
@@ -55,18 +61,48 @@ public class Controller {
         });
     }
 
-    private void deletelistner()   {
+
+    manageCustomer Selected_button_id = new manageCustomer();
+    private void deletelistner(Model model1)   {
         ArrayList<JButton> allbuttons = view.getMf().getIp().getCp().getCustomer_buttons();
+        JFrame frame = new JFrame("Delete Airport");
+        frame.setSize(300, 150);
+        frame.setLayout(new FlowLayout());
         for(JButton allbutton : allbuttons)
             allbutton.addMouseListener(new MouseAdapter() {
                 @Override
                 public void mouseClicked(MouseEvent e) {
                     super.mouseClicked(e);
-                    System.out.println("all clicked");
+                    String buttonText = allbutton.getText();
+                    System.out.println(buttonText);
+                    if(buttonText.contains("delete")) {
+                        System.out.println("this is a delete button");
+                        String[] seprated = buttonText.split(":");
+                        System.out.println("string " + seprated[1]);
+                        int button_id = Integer.parseInt(seprated[1]);
+                        System.out.println(button_id);
+                        String message = "Do you want to delete Button ID: " + button_id + "?";
+                        int option = JOptionPane.showOptionDialog(null, message, "Confirm Deletion", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+
+                        if (option == JOptionPane.YES_OPTION) {
+                            ArrayList customers = model1.getManageCustomerData().getTable();
+                            customers.remove(button_id - 1);
+                            ObjectMapper mapper = new ObjectMapper();
+                            try {
+                                mapper.writeValue(Paths.get("C:\\OOPMISTIC\\44_40_OOPM\\mini project\\src\\Model\\customers.json").toFile(), customers);
+                            } catch (IOException ex) {
+                                throw new RuntimeException(ex);
+                            }
+                            JOptionPane.showMessageDialog(frame, "Customer Deleted: " + button_id);
+                        }
+
+                    }
                 }
             });
 
         }
+
+
 
 
     private void addScrollingDevices()

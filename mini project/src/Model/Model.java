@@ -3,7 +3,7 @@ package Model;
 public class Model
 {
     protected manageElectronic_Device manageElectronicDeviceData = new manageElectronic_Device();
-    protected manageCustomer manageCustomerData = new manageCustomer();
+    public manageCustomer manageCustomerData = new manageCustomer();
 
     public Model()
     {

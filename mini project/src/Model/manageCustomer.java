@@ -1,6 +1,7 @@
 package Model;
 
 
+import Controller.Controller;
 import View.View;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -18,8 +19,12 @@ public class manageCustomer extends filehandlingcustomer implements Displayable 
     int lastLineIndex;
     int highlightedLine;
 
+
+
+
+
     public manageCustomer(){
-        readJsonFile("C:\\OOPMISTIC\\10 Controller\\src\\model\\customers.json");
+        readJsonFile("C:\\OOPMISTIC\\44_40_OOPM\\mini project\\src\\Model\\customers.json");
     }
 
     public ArrayList<Customer> readJsonFile(String file_path) {
@@ -33,14 +38,15 @@ public class manageCustomer extends filehandlingcustomer implements Displayable 
             // Iterate through JSON array
             if (rootNode.isArray()) {
                 for (JsonNode node : rootNode) {
-                    int currentCustomerCount = node.get("id").asInt();
-                    String name = node.get("first_name").asText();
-                    String phone_no = node.get("phone no").asText();
-                    String email_id = node.get("email").asText();
+                    String name = node.get("customer_name").asText();
+                    String phone_no = node.get("phone_no").asText();
+                    String email_id = node.get("email_id").asText();
                     String gender = node.get("gender").asText();
-                    int extended_warranty_duration = node.get("wxtw").asInt();
+                    int currentCustomerCount = node.get("customer_id").asInt();
+                    int extended_warranty_duration = node.get("extended_warranty_duration").asInt();
                     Customer newCustomer = new Customer(currentCustomerCount,gender,name,phone_no,email_id,extended_warranty_duration);
                     customers.add(newCustomer);
+
                 }
             }
         } catch (IOException e) {
@@ -59,14 +65,6 @@ public class manageCustomer extends filehandlingcustomer implements Displayable 
                 ObjectNode jsonNode = Obj.createObjectNode();
                 Customer customer = customers.get(i);
 
-                // Map customer properties to original field names
-                jsonNode.put("id", customer.getCustomer_id());
-                jsonNode.put("first_name", customer.getCustomer_name());
-                jsonNode.put("phone no", customer.getPhone_no());
-                jsonNode.put("email", customer.getEmail_id());
-                jsonNode.put("gender", customer.getGender());
-                jsonNode.put("wxtw", customer.getExtended_warranty_duration());
-
                 // Convert the JSON object to a JSON string and print it
                 String cust_str = Obj.writeValueAsString(jsonNode);
                 System.out.println(cust_str);
@@ -84,6 +82,7 @@ public class manageCustomer extends filehandlingcustomer implements Displayable 
         headers.add("MobileNo");
         headers.add("Email");
         headers.add("Gender");
+        headers.add("Delete Customer");
 
 
 
@@ -110,13 +109,21 @@ public class manageCustomer extends filehandlingcustomer implements Displayable 
         Customer_details.add(String.valueOf(customers.get(line).getPhone_no()));
         Customer_details.add(customers.get(line).getEmail_id());
         Customer_details.add(customers.get(line).getGender());
+        Customer_details.add("delete ID:"+ customers.get(line).getCustomer_id());
 
 
 
 
 
 
-        return Customer_details;
+
+
+
+
+
+
+
+        return Customer_details ;
     }
 
     /*
@@ -131,9 +138,11 @@ public class manageCustomer extends filehandlingcustomer implements Displayable 
 
         for (int i = firstLine; i <= lastLine; i++) {
             Customes_subset.add(getLine(i));
+            System.out.println(i);
         }
         return Customes_subset;
     }
+
 
     @Override
     public int getFirstLineToDisplay() {
@@ -155,6 +164,7 @@ public class manageCustomer extends filehandlingcustomer implements Displayable 
     public int getLinesBeingDisplayed() {
         return linesBeingDisplayed;
     }
+
 
     @Override
     public void setFirstLineToDisplay(int firstLine) {

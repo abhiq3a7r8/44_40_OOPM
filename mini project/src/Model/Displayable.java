@@ -21,10 +21,12 @@ public interface Displayable
      */
     ArrayList<ArrayList<String>> getLines(int firstLine, int lastLine);
 
+
     public int getFirstLineToDisplay();
     public int getLineToHighlight();
     public int getLastLineToDisplay();
     public int getLinesBeingDisplayed();
+
 
     public void setFirstLineToDisplay(int firstLine);
     public void setLineToHighlight(int highlightedLine);

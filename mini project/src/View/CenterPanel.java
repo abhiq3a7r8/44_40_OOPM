@@ -45,16 +45,7 @@ public class CenterPanel extends JPanel {
 
         }
 
-        for (int i = 1; i <= rows; i++)
-        {
-            JButton del = new JButton();
-            del.setBackground(Color.red);
-            del.setPreferredSize(new Dimension(80,25));
-            delete_buttons.add(del);
-            this.add(del);
-            validate();
-            repaint();
-        }
+
 
     }
 
@@ -69,6 +60,7 @@ public class CenterPanel extends JPanel {
             for (int player_col_no = 0; player_col_no < headers.size(); player_col_no++)
             {
                 int button_no = player_no * headers.size() + player_col_no;
+
                 String button_txt = lines.get(player_no).get(player_col_no);
                 setCustomer_buttons(button_no,button_txt);
             }
